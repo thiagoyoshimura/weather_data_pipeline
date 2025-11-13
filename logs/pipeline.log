@@ -1,0 +1,13 @@
+Traceback (most recent call last):
+  File "/Users/thiagoyoshimura/Projects/weather_data_pipeline/scripts/ingest_weather_api.py", line 1, in <module>
+    import requests
+ModuleNotFoundError: No module named 'requests'
+Starting daily weather data pipeline...
+
+ Running ingestion script...
+Traceback (most recent call last):
+  File "/Users/thiagoyoshimura/Projects/weather_data_pipeline/scripts/run_pipeline.py", line 12, in <module>
+    subprocess.run(["python3", os.path.join(BASE_DIR, "scripts", "ingest_weather_api.py")], check=True)
+  File "/Library/Developer/CommandLineTools/Library/Frameworks/Python3.framework/Versions/3.9/lib/python3.9/subprocess.py", line 528, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python3', '/Users/thiagoyoshimura/Projects/weather_data_pipeline/scripts/ingest_weather_api.py']' returned non-zero exit status 1.
