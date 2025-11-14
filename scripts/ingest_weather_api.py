@@ -12,7 +12,8 @@ CITIES = ["montreal", "toronto", "vancouver"]
 DAYS_BACK = 5
 
 # Create a base data folder
-DATA_DIR = "../data/raw"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_DIR = os.path.join(BASE_DIR, "..", "data", "raw")  # absolute path
 
 def fetch_weather(city, date):
     """Fetch historical weather for a city and date."""

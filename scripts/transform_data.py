@@ -2,8 +2,9 @@ import os
 import json
 import pandas as pd
 
-RAW_DIR = "../data/raw"
-CLEAN_DIR = "../data/clean"
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+RAW_DIR = os.path.join(BASE_DIR, "..", "data", "raw")
+CLEAN_DIR = os.path.join(BASE_DIR, "..", "data", "clean")
 
 def extract_weather_data(city, file_path):
     """Extract useful metrics from one weather JSON file."""
