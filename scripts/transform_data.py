@@ -39,12 +39,13 @@ def main():
                     except Exception as e:
                         print(f"⚠️ Error processing {file_path}: {e}")
 
-    df = pd.DataFrame(rows)
     os.makedirs(CLEAN_DIR, exist_ok=True)
-    output_path = os.path.join(CLEAN_DIR, "weather_clean.csv")
-    df.to_csv(output_path, index=False)
+    output_path = os.path.join(CLEAN_DIR, "weather_clean.json")
+    with open(output_path, "w") as f:
+        json.dump(rows, f, indent=2)
+
     print(f"✅ Saved clean dataset to {output_path}")
-    print(f"Total rows: {len(df)}")
+    print(f"Total rows: {len(rows)}")
 
 if __name__ == "__main__":
-    main()
+    main()  

@@ -1,6 +1,4 @@
-#!/bin/sh
-'''exec' "/Users/thiagoyoshimura/Documents/40 - Data/Projects/weather_data_pipeline/venv/bin/python3" "$0" "$@"
-' '''
+#!/Users/thiagoyoshimura/Projects/weather_data_pipeline/venv/bin/python
 # -*- coding: utf-8 -*-
 import re
 import sys

@@ -19,14 +19,14 @@ with DAG(
     dag_id="weather_data_pipeline",
     default_args=default_args,
     description="Daily Weather Data Pipeline",
-    schedule="0 13 * * *",  # every day at 1PM
+    schedule="* 10 * * *",  # every day at 1PM
     start_date=datetime(2025, 11, 13),
     catchup=False,
-    tags=["weather"],  # optional, helps organize DAGs in UI
+    tags=["weather"],
 ) as dag:
 
     def run_script(script_name, **kwargs):
-        """Run a Python script using subprocess"""
+        """Run a Python script inside venv using subprocess"""
         script_path = os.path.join(SCRIPTS_DIR, script_name)
         subprocess.run([PYTHON, script_path], check=True)
 
@@ -42,5 +42,11 @@ with DAG(
         op_args=["transform_data.py"],
     )
 
-    # Define task order
-    ingest >> transform
+    load = PythonOperator(
+        task_id="load_to_postgres",
+        python_callable=run_script,
+        op_args=["load_data.py"],
+    )
+
+    # Task flow
+    ingest >> transform >> load
